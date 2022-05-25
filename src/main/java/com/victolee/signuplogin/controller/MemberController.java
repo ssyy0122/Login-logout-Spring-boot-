@@ -1,5 +1,6 @@
 package com.victolee.signuplogin.controller;
 
+import com.victolee.signuplogin.dto.MemberDto;
 import com.victolee.signuplogin.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,16 @@ public class MemberController {
         return "/index";
     }
     //회원가입 페이지
-    @GetMapping
-    public String dispSingnup() {
-        return "/singup";
+    @GetMapping("/user/signup")
+    public String dispSignup() {
+        return "/signup";
     }
+
     //회원가입 처리
+    @PostMapping("/user/signup")
+    public String execSignup(MemberDto memberDto){
+        memberService.joinuser(memberDto);
+
+        return "redirect:/user/login";
+    }
 }
