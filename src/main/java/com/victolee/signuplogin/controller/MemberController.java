@@ -30,4 +30,9 @@ public class MemberController {
 
         return "redirect:/user/login";
     }
+    //로그인 페이지
+    @GetMapping("/user/login")
+    public String dispLogin(){
+        return "/login";
+    }
 }
